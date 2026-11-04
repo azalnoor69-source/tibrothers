@@ -4,6 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="TI Brothers — Bonnets & Streetwear. Livraison partout au Maroc. Offre spéciale 69 DH.">
+  <meta name="theme-color" content="#08090b">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="TI Brothers — Bonnets & Streetwear">
+  <meta property="og:description" content="Bonnets streetwear au Maroc — livraison partout au Maroc. 1 bonnet = 69 DH, 2 = 119 DH, 3 = 159 DH.">
+  <meta property="og:image" content="assets/logo.jpg">
+  <meta property="og:image:alt" content="TI Brothers logo">
+  <meta property="og:site_name" content="TI Brothers">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TI Brothers — Bonnets & Streetwear">
+  <meta name="twitter:description" content="Bonnets streetwear au Maroc — livraison partout au Maroc.">
+  <meta name="twitter:image" content="assets/logo.jpg">
   <title>TI Brothers — Bonnets & Streetwear</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +22,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="topbar">🔥 OFFRE LIMITÉE — BONNET À <strong>69 DH</strong> • LIVRAISON PARTOUT AU MAROC 🇲🇦</div>
+  <div class="topbar">🔥 OFFRE LIMITÉE — BONNET À <strong>69 DH</strong> • livraison partout au Maroc 🇲🇦</div>
 
   <header class="nav">
     <a class="brand" href="#accueil">
@@ -32,10 +43,14 @@
         <h1>TON STYLE.<br><span>TON ÉNERGIE.</span><br>TON BONNET.</h1>
         <p>Des bonnets au look sportif et streetwear, pensés pour compléter ton outfit au quotidien.</p>
         <div class="price-row">
-          <span class="old-price">149 DH</span>
           <span class="new-price">69 DH</span>
-          <span class="badge">-54%</span>
+          <span class="badge">1 BONNET</span>
         </div>
+        <div class="bundle-price-list" aria-label="Tarifs des paquets">
+          <span>2 = 119 DH</span>
+          <span>3 = 159 DH</span>
+        </div>
+        <div class="promo-note">Style streetwear • qualité premium • livraison partout au Maroc</div>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#commander">Commander maintenant</a>
           <a class="btn btn-ghost" href="#produits">Voir les modèles</a>
@@ -105,7 +120,11 @@
               <p>Le classique noir, facile à porter avec tout.</p>
             </div>
             <div class="product-bottom">
-              <div><span class="mini-old">149 DH</span><strong>69 DH</strong></div>
+              <div class="bundle-price-box">
+                <span>1 = 69 DH</span>
+                <span>2 = 119 DH</span>
+                <span>3 = 159 DH</span>
+              </div>
               <a class="small-btn" href="#commander" data-product="Black Sport">Choisir</a>
             </div>
           </div>
@@ -142,7 +161,11 @@
               <p>Un look clair et clean pour tes outfits sportifs.</p>
             </div>
             <div class="product-bottom">
-              <div><span class="mini-old">149 DH</span><strong>69 DH</strong></div>
+              <div class="bundle-price-box">
+                <span>1 = 69 DH</span>
+                <span>2 = 119 DH</span>
+                <span>3 = 159 DH</span>
+              </div>
               <a class="small-btn" href="#commander" data-product="White Sport">Choisir</a>
             </div>
           </div>
@@ -192,11 +215,25 @@
             <option>White Sport</option>
           </select>
         </label>
+        <label>Couleur
+          <select id="color">
+            <option>Noir</option>
+            <option>Blanc</option>
+          </select>
+          <div class="color-swatches" aria-label="Palette de couleurs disponibles">
+            <span class="swatch swatch-black" title="Noir" aria-label="Noir"></span>
+            <span class="swatch swatch-white" title="Blanc" aria-label="Blanc"></span>
+          </div>
+        </label>
         <label>Quantité
           <select id="qty">
-            <option>1</option><option>2</option><option>3</option><option>4</option>
+            <option>1</option><option>2</option><option>3</option>
           </select>
         </label>
+        <div class="order-total" aria-live="polite">
+          <span>Total estimé</span>
+          <strong id="totalPrice">69 DH</strong>
+        </div>
         <button class="btn btn-primary submit" type="submit">Commander via WhatsApp →</button>
         <small>En cliquant, WhatsApp s'ouvrira avec ton message de commande.</small>
       </form>

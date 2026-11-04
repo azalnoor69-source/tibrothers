@@ -1,6 +1,26 @@
 const productSelect = document.getElementById("product");
 const orderForm = document.getElementById("orderForm");
 const productCards = document.querySelectorAll(".product-card");
+const qtyInput = document.getElementById("qty");
+const colorInput = document.getElementById("color");
+const totalPrice = document.getElementById("totalPrice");
+
+const getBundleTotal = (quantity) => {
+  const qty = Number.parseInt(quantity, 10) || 1;
+
+  if (qty === 1) return 69;
+  if (qty === 2) return 119;
+  if (qty === 3) return 159;
+
+  return 159 + (qty - 3) * 69;
+};
+
+const updateTotal = () => {
+  if (!totalPrice || !qtyInput) return;
+
+  const total = getBundleTotal(qtyInput.value);
+  totalPrice.textContent = `${total} DH`;
+};
 
 document.querySelectorAll("[data-gallery-image]").forEach((thumb) => {
   thumb.addEventListener("click", () => {
@@ -54,6 +74,11 @@ if (productSelect) {
   syncSelectedProduct(productSelect.value.trim());
 }
 
+if (qtyInput) {
+  qtyInput.addEventListener("change", updateTotal);
+  updateTotal();
+}
+
 if (orderForm) {
   orderForm.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -61,27 +86,28 @@ if (orderForm) {
     const nameInput = document.getElementById("name");
     const cityInput = document.getElementById("city");
     const addressInput = document.getElementById("address");
-    const qtyInput = document.getElementById("qty");
 
     const name = nameInput ? nameInput.value.trim() : "";
     const city = cityInput ? cityInput.value.trim() : "";
     const address = addressInput ? addressInput.value.trim() : "";
     const product = productSelect ? productSelect.value.trim() : "";
+    const color = colorInput ? colorInput.value.trim() : "";
     const qty = qtyInput ? qtyInput.value.trim() : "";
 
-    if (!name || !city || !address || !product || !qty) {
-      const firstInvalidField = [nameInput, cityInput, addressInput, productSelect, qtyInput].find(Boolean);
+    if (!name || !city || !address || !product || !color || !qty) {
+      const firstInvalidField = [nameInput, cityInput, addressInput, productSelect, colorInput, qtyInput].find(Boolean);
       if (firstInvalidField) {
         firstInvalidField.focus();
       }
       return;
     }
 
-    const total = Number.parseInt(qty, 10) * 69;
+    const total = getBundleTotal(qty);
     const message = `Bonjour TI Brothers 👋
 
 Je veux commander :
 • Modèle : ${product}
+• Couleur : ${color}
 • Quantité : ${qty}
 • Total : ${total} DH
 
